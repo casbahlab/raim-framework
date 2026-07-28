@@ -314,7 +314,6 @@
       { value: `${h.nStage1} → ${h.nStage2}`, label: "Panellists, Stage 1 → Stage 2", sub: "4 stakeholder groups × 4 participants in Stage 2" },
       { value: h.nFeatures, label: "Candidate features assessed", sub: `across ${DATA.pillars.length} Trustworthy AI pillars` },
       { value: `${h.kendallsW.stage1.toFixed(2)} → ${h.kendallsW.stage2.toFixed(2)}`, label: "Kendall's W (agreement)", sub: "higher = stronger cross-panel agreement" },
-      { value: `${h.consensusRate.stage1}/${h.nFeatures} → ${h.consensusRate.stage2}/${h.nFeatures}`, label: "Features at consensus (IQR ≤ 1)", sub: "Stage 1 vs. Stage 2" },
     ];
     const wrap = document.getElementById("stat-tiles");
     wrap.innerHTML = tiles.map((t) => `
