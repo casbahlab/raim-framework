@@ -6,10 +6,17 @@ This repository hosts the website and resources for the Responsible AI Music (RA
 
 ## Repository Structure
 
-*   **`index.html`:** The main HTML file for the website's homepage.
-*   **`style.css`:**  The CSS file containing the website's styles.
-*   **`script.js`:** The JavaScript file for interactive elements (popups, etc.).
-*   **`assets/`:** A directory containing images and other media files.
+*   **`index.html`:** The website's homepage — background, the 7 Trustworthy AI pillars, and the 45 RAIM features. Pillar headings, intros, and feature cards are rendered at runtime from `data/features.json`; clicking a card opens its full description in a shared modal.
+*   **`evaluation.html`:** An interactive explorer for the RAIM Delphi study results — per-pillar radar charts comparing how each stakeholder group (AI/Technology, Artists, Ethics, Law) rated feature importance, and a Stage 1 → Stage 2 consensus view. Clicking a feature (in the radar, the consensus chart, or either table view) opens the same shared description modal as `index.html`.
+*   **`style.css`:** Shared site-wide styles (nav, cards, the feature-description modal, section layout).
+*   **`css/evaluation.css`:** Styles specific to `evaluation.html`'s charts and controls.
+*   **`data/features.json`:** The canonical content for all 7 pillars and 45 features (name, brief, facet, full description). Generated and maintained in the private `raim-analysis` repo and committed here as a build artifact — don't hand-edit; regenerate from there.
+*   **`js/features-data.js`:** `data/features.json` wrapped as a browser-loadable script (generated — don't hand-edit).
+*   **`js/feature-modal.js`:** The shared feature-detail modal used by both `index.html` and `evaluation.html`.
+*   **`js/render-features.js`:** Renders `index.html`'s pillar sections and feature cards from `js/features-data.js`.
+*   **`js/evaluation-data.js`:** The Delphi study's statistics (per-group feature importance, Stage 1 → Stage 2 consensus) as a browser-loadable script. Generated from the study data in the private `raim-analysis` repo (don't hand-edit).
+*   **`js/evaluation.js`:** The radar charts and consensus explorer on `evaluation.html`.
+*   **`assets/`:** Images and other media files.
 *   **`README.md`:** This file, providing an overview of the project.
 *   **(Optional Folders - for future expansion):**
     *   `features/`:  For a more structured descriptions of the RAIM features.
