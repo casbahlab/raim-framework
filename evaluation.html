@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAIM Initiative — Evaluation</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link href="css/evaluation.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">RAIM</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#tai">Background</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#features">Features</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="evaluation.html">Evaluation <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#action">Call for action</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main role="main" class="viz-root">
+
+    <!-- Hero -->
+    <section id="eval-hero" class="jumbotron">
+      <div class="container">
+        <h1 class="display-4 text-body-emphasis">The RAIM Delphi Study</h1>
+        <p class="lead">How much does each stakeholder group value each responsible-AI feature? Explore the results of
+          our two-stage Delphi study, interactively.</p>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="container my-4 eval-section">
+      <p class="section-intro">To validate and prioritise the 45 candidate features of the RAIM framework, we ran a
+        two-stage Delphi study with a panel of <strong>music AI researchers</strong>, <strong>artists &amp;
+          creators</strong>, <strong>AI ethicists</strong>, and <strong>legal experts</strong>. In Stage 1, panellists
+        rated the importance of every feature (1&ndash;5 Likert scale) independently. Results were aggregated, shared
+        back with the panel, and discussed; in Stage 2 the same panellists re-rated each feature, aiming to reduce
+        disagreement and move towards consensus across groups. The charts below let you explore both <em>what each
+          group values</em> (per-pillar radar charts) and <em>how opinions shifted</em> between the two stages.</p>
+
+      <div class="stat-row" id="stat-tiles"></div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Radar section -->
+    <section id="radar-section" class="container my-4 eval-section">
+      <h2>Feature importance by stakeholder group</h2>
+      <p class="section-intro">Each axis is a feature within the selected pillar; the distance from the centre is the
+        mean importance score (1&ndash;5) given by that group in Stage 2. The dashed ring marks the neutral midpoint
+        (3). Select a pillar below, and click a group in the legend to isolate it.</p>
+
+      <div class="pillar-tabs" id="pillar-tabs"></div>
+
+      <div class="radar-panel">
+        <div class="radar-chart-wrap">
+          <div id="radar-chart"></div>
+        </div>
+        <div>
+          <div class="viz-legend" id="radar-legend"></div>
+          <button class="table-view-toggle mt-3" id="radar-table-toggle" type="button">View as table</button>
+        </div>
+      </div>
+      <div id="radar-table-wrap" class="mt-3" style="display:none; overflow-x:auto;"></div>
+
+      <p class="method-note">Mean ratings from Stage 2 (post-discussion), n = 4 participants per stakeholder group.
+        Hover any marker for the exact mean and standard deviation, or click a marker or feature name to read its
+        full description.</p>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Consensus section -->
+    <section id="consensus-section" class="container my-4 eval-section">
+      <h2>Did the panel converge? Stage 1 → Stage 2</h2>
+      <p class="section-intro">Comparing the full Stage 1 panel (n=21) against the full Stage 2 panel (n=16) for
+        every feature shows whether the discussion phase narrowed disagreement. A feature is considered at
+        <em>consensus</em> when its interquartile range (IQR) is &le; 1 on the 5-point scale.</p>
+
+      <div class="status-summary-bar" id="status-summary-bar"></div>
+      <div class="status-legend" id="status-legend"></div>
+
+      <div class="consensus-controls">
+        <select id="consensus-pillar-filter" aria-label="Filter by pillar"></select>
+        <input type="search" id="consensus-search" placeholder="Search feature name or ID…" aria-label="Search features">
+        <button class="table-view-toggle" id="consensus-view-toggle" type="button">View as table</button>
+        <span class="legend-hint" id="consensus-count"></span>
+      </div>
+
+      <div id="consensus-viz"></div>
+      <div id="consensus-table-wrap" style="overflow-x:auto;"></div>
+
+      <p class="method-note">Consensus outcome buckets four raw statistical labels into the colour scale above:
+        <strong>consensus</strong> covers features that reached, strengthened, or maintained IQR&nbsp;&le;&nbsp;1;
+        <strong>converging</strong> narrowed but hasn't reached it yet; <strong>stable/diverged</strong> stayed above
+        the threshold or widened; <strong>consensus lost</strong> had IQR&nbsp;&le;&nbsp;1 in Stage 1 but not in Stage
+        2. Kendall's W rose from 0.232 to 0.300 across the two stages, indicating stronger, though still moderate,
+        agreement after discussion.</p>
+    </section>
+
+    <div class="section-divider mb-0"></div>
+
+  </main>
+
+  <footer class="text-muted py-4 bg-light">
+    <div class="container">
+      <div class="d-flex justify-content-between">
+        <p>Responsible AI Music, An Open Initiative © 2025</p>
+        <p><a href="index.html">Back to RAIM home</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/features-data.js"></script>
+  <script src="js/feature-modal.js"></script>
+  <script src="js/evaluation-data.js"></script>
+  <script src="js/evaluation.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/libs/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
