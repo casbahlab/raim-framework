@@ -1,6 +1,6 @@
 # Responsible AI Music (RAIM) Initiative
 
-[![Website](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://casbahlab.github.io/raim-initiative)
+[![Website](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://casbahlab.github.io/raim-framework/)
 
 This repository hosts the website and resources for the Responsible AI Music (RAIM) initiative. RAIM is a collaborative effort to define, expand, and monitor requirements for generative music AI, ensuring the future of music creation aligns with Trustworthy AI principles.
 
