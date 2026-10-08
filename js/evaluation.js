@@ -311,7 +311,7 @@
   function renderStatTiles() {
     const h = DATA.headline;
     const tiles = [
-      { value: `${h.nStage1} → ${h.nStage2}`, label: "Panellists, Stage 1 → Stage 2", sub: "4 stakeholder groups × 4 participants in Stage 2" },
+      { value: `${h.nStage1} → ${h.nStage2}`, label: "Panellists, Stage 1 → Stage 2", sub: "4 expert groups × 4 participants in Stage 2" },
       { value: h.nFeatures, label: "Candidate features assessed", sub: `across ${DATA.pillars.length} Trustworthy AI pillars` },
       { value: `${h.kendallsW.stage1.toFixed(2)} → ${h.kendallsW.stage2.toFixed(2)}`, label: "Kendall's W (agreement)", sub: "higher = stronger cross-panel agreement" },
     ];
