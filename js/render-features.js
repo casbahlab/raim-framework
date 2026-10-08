@@ -1,6 +1,7 @@
-// Renders the pillar jump-links and per-pillar feature card decks on
-// index.html from RAIM_FEATURES (features-data.js). Clicking a card opens
-// its full description via feature-modal.js's openFeatureModal().
+// Renders the overview diagram, pillar jump-links and per-pillar feature card
+// decks on index.html from RAIM_FEATURES (features-data.js). Clicking a card
+// or overview chip opens its full description via feature-modal.js's
+// openFeatureModal().
 
 (function () {
   "use strict";
@@ -18,6 +19,37 @@
         <a class="btn btn-outline-primary" href="#features-${p.num}">${p.name}</a>
       </li>
     `).join("");
+  }
+
+  function renderOverview() {
+    const overview = document.getElementById("raim-overview");
+    if (!overview) return;
+
+    overview.querySelector(".raim-overview-count").textContent = RAIM_FEATURES.features.length;
+    const list = overview.querySelector(".raim-overview-pillars");
+    list.innerHTML = RAIM_FEATURES.pillars.map((p) => {
+      const features = RAIM_FEATURES.features.filter((f) => f.pillar === p.num);
+      return `
+        <li class="raim-overview-pillar" data-pillar="${p.num}">
+          <div class="raim-overview-label">
+            <span class="raim-overview-num" aria-hidden="true">${p.num}</span>
+            <div>
+              <a class="raim-overview-name" href="#features-${p.num}">${p.name}</a>
+              <small>${features.length} features</small>
+            </div>
+          </div>
+          <ul class="raim-overview-chips" role="list">
+            ${features.map((f) => `
+              <li><button type="button" class="raim-chip" data-feature-id="${f.id}">${f.name}</button></li>
+            `).join("")}
+          </ul>
+        </li>
+      `;
+    }).join("");
+
+    list.querySelectorAll(".raim-chip").forEach((chip) => {
+      chip.addEventListener("click", () => window.openFeatureModal(chip.dataset.featureId));
+    });
   }
 
   function renderPillarSection(pillar) {
@@ -56,6 +88,7 @@
     });
   }
 
+  renderOverview();
   renderJumpLinks();
   RAIM_FEATURES.pillars.forEach(renderPillarSection);
 })();
